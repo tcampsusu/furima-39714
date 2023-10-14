@@ -4,11 +4,14 @@
 
 | Column               | Type   | Options     |
 | ------------------   | ------ | ----------- |
-| nickname             | string | null: false, unique: true |
+| nickname             | string | null: false |
 | email                | string | null: false, unique: true |
 | encrypted_password   | string | null: false |
-| name                 | string | null: false, unique: true |
-| name_kana            | string | null: false, unique: true |
+| password_confirmation| string | null: false |
+| last_name            | string | null: false |
+| first_name           | string | null: false |
+| last_name_kana       | string | null: false |
+| first_name_kana      | string | null: false |
 | birth_date           | date   | null: false |
 
 ### Association
@@ -18,17 +21,16 @@
 
 ## items テーブル
 
-|     Column              | Type    | Options     |
-|     ------              | ------  | ----------- |
-| item_image              | text    | null: false |
-| item_name               | string  | null: false |
-| item_description        | text    | null: false |
-| item_category           | string  | null: false |   
-| item_condition          | string  | null: false | 
-| item_shipping_fee_status| string  | null: false | 
-| item_shipping_area      | string  | null: false |
-| item_shipping_time      | string  | null: false |
-| item_price              | integer  | null: false |
+|     Column                 | Type    | Options     |
+|     ------                 | ------  | ----------- |
+| item_name                  | string  | null: false |
+| item_description           | text    | null: false |
+| item_category_id           | integer | null: false |   
+| item_condition_id          | integer | null: false | 
+| item_shipping_fee_status_id| integer | null: false | 
+| item_shipping_area_id      | integer | null: false |
+| item_shipping_time_id      | integer | null: false |
+| item_price                 | integer | null: false |
 | user | references | null: false, foreign_key: true |
 
 ### Association
@@ -51,14 +53,14 @@
 
 ## Shipping_address テーブル
 
-| Column            | Type   | Options     |
+| Column            | Type    | Options     |
 | ------            | ------  | ----------- |
 | post_code         | string  | null: false |
-| prefecture        | string  | null: false |
+| prefecture_id     | integer | null: false |
 | city              | string  | null: false |
 | block             | string  | null: false |   
-| building_name     | string  | null: false | 
-| phone_no          | integer  | null: false | 
+| building_name     | string  | 
+| phone_no          | string | null: false | 
 | order             | references | null: false, foreign_key: true |
 
 ### Association
