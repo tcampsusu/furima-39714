@@ -7,7 +7,6 @@
 | nickname             | string | null: false |
 | email                | string | null: false, unique: true |
 | encrypted_password   | string | null: false |
-| password_confirmation| string | null: false |
 | last_name            | string | null: false |
 | first_name           | string | null: false |
 | last_name_kana       | string | null: false |
@@ -51,17 +50,17 @@
 - belongs_to :user
 - has_one    :shipping_address
 
-## Shipping_address テーブル
+## Shipping_addresses テーブル
 
-| Column            | Type    | Options     |
-| ------            | ------  | ----------- |
-| post_code         | string  | null: false |
-| prefecture_id     | integer | null: false |
-| city              | string  | null: false |
-| block             | string  | null: false |   
-| building_name     | string  | 
-| phone_no          | string | null: false | 
-| order             | references | null: false, foreign_key: true |
+| Column                | Type    | Options     |
+| ------                | ------  | ----------- |
+| post_code             | string  | null: false |
+| item_shipping_area_id | integer | null: false |
+| city                  | string  | null: false |
+| block                 | string  | null: false |   
+| building_name         | string  | 
+| phone_no              | string | null: false | 
+| order                 | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
