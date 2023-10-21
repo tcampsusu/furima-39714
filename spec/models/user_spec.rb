@@ -1,4 +1,4 @@
-#userモデルの単体テストコードの一例（spec/models/user_spec.rb内）    
+
 
 require 'rails_helper'
 
