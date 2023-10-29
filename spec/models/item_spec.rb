@@ -89,7 +89,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item shipping time can't be blank")
       end
 
-      it 'item_shipping_time_id が空では登録できない' do
+      it '発送までの日数に「---」が選択されている場合は出品できない' do
         @item.item_shipping_time_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item shipping time can't be blank")
