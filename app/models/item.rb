@@ -15,6 +15,5 @@ validates :item_condition_id, presence: true, numericality: { other_than: 1, mes
 validates :item_shipping_fee_status_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
 validates :item_shipping_area_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
 validates :item_shipping_time_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
-validates :item_price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/}
-
+validates :item_price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 end

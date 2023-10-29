@@ -40,8 +40,20 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item category can't be blank")
       end
 
+      it 'カテゴリーに「---」が選択されている場合は出品できない' do
+        @item.item_category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item category can't be blank")
+      end
+
       it 'item_condition_id が空では登録できない' do
         @item.item_condition_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item condition can't be blank")
+      end
+
+      it '商品の状態に「---」が選択されている場合は出品できない' do
+        @item.item_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item condition can't be blank")
       end
@@ -52,8 +64,21 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item shipping fee status can't be blank")
       end
 
+      it '配送料の負担に「---」が選択されている場合は出品できない' do
+        @item.item_shipping_fee_status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item shipping fee status can't be blank")
+      end
+
+
       it 'item_shipping_area_id が空では登録できない' do
         @item.item_shipping_area_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item shipping area can't be blank")
+      end
+
+      it '発送元の地域に「---」が選択されている場合は出品できない' do
+        @item.item_shipping_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item shipping area can't be blank")
       end
@@ -64,16 +89,16 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item shipping time can't be blank")
       end
 
+      it 'item_shipping_time_id が空では登録できない' do
+        @item.item_shipping_time_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item shipping time can't be blank")
+      end
+
       it 'item_price が空では登録できない' do
         @item.item_price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Item price can't be blank")
-      end
-
-      it 'item_price が300以下では登録できない' do
-        @item.item_price = '200'
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Item price must be greater than or equal to 300")
       end
 
       it 'item_price が300以下では登録できない' do
@@ -99,6 +124,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
       end
+
+
 
     end
   end
