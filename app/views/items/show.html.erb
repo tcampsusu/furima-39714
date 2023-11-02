@@ -54,7 +54,7 @@
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><% @item.item_shipping_fee_status.name %></td>
+          <td class="detail-value"><%= @item.item_shipping_fee_status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
@@ -103,5 +103,4 @@
   </div>
   <a href="#" class="another-item"><%= @item.item_category.name %>をもっと見る</a>
 </div>
-
 <%= render "shared/footer" %>
