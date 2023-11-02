@@ -22,7 +22,7 @@
          ¥ <%= @item.item_price %>
       </span>
       <span class="item-postage">
-        <%= ItemShippingFeeStatus.find(@item.item_shipping_fee_status_id).name %>
+        <%= @item.item_shipping_fee_status.name %>
       </span>
     </div>
    <% if user_signed_in? && @item.present?  %> 
@@ -46,23 +46,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= ItemCategory.find(@item.item_category_id).name %></td>
+          <td class="detail-value"><%= @item.item_category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= ItemCondition.find(@item.item_condition_id).name  %></td>
+          <td class="detail-value"><%= @item.item_condition.name  %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= ItemShippingFeeStatus.find(@item.item_shipping_fee_status_id).name %></td>
+          <td class="detail-value"><% @item.item_shipping_fee_status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= ItemShippingArea.find(@item.item_shipping_area_id).name %></td>
+          <td class="detail-value"><%= @item.item_shipping_area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= ItemShippingTime.find(@item.item_shipping_time_id).name %></td>
+          <td class="detail-value"><%= @item.item_shipping_time.name %></td>
         </tr>
       </tbody>
     </table>
@@ -101,9 +101,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+  <a href="#" class="another-item"><%= @item.item_category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
