@@ -36,7 +36,12 @@ end
 
 
   def edit
+    if @item.order.present?
+    redirect_to root_path
+    else
+    render :edit, status: :unprocessable_entity
   end
+end
 
   def destroy
     item = Item.find(params[:id])
@@ -60,12 +65,11 @@ end
     @item = Item.find(params[:id])
   end
 
+  
   def move_to_index
-    unless @item.user == current_user
+    unless @item.user == current_user 
       redirect_to action: :index
     end
-
-
-end
+  end
 
 end
